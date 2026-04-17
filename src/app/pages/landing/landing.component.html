@@ -1,0 +1,87 @@
+<div class="space-y-8">
+  <!-- Buttons Section -->
+  <section class="space-y-4">
+    <h1 class="text-3xl font-bold text-ink">Component Library - Demo</h1>
+
+    <!-- Primary Buttons -->
+    <div class="space-y-2">
+      <h2 class="text-xl font-semibold text-ink">Primary Buttons</h2>
+      <div class="flex flex-wrap gap-3">
+        <app-button variant="primary" size="sm" leadingIcon="chevron_left" trailingIcon="chevron_right">Small</app-button>
+        <app-button variant="primary" size="md" leadingIcon="chevron_left" trailingIcon="chevron_right">Medium</app-button>
+        <app-button variant="primary" size="lg" leadingIcon="chevron_left" trailingIcon="chevron_right">Large</app-button>
+        <app-button variant="primary" size="md" [disabled]="true" leadingIcon="chevron_left" trailingIcon="chevron_right">Disabled</app-button>
+        <app-button variant="primary" size="sm" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="primary" size="md" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="primary" size="lg" [iconOnly]="true" leadingIcon="info"></app-button>
+      </div>
+    </div>
+
+    <!-- Secondary Buttons -->
+    <div class="space-y-2">
+      <h2 class="text-xl font-semibold text-ink">Secondary Buttons</h2>
+      <div class="flex flex-wrap gap-3">
+        <app-button variant="secondary" size="sm" leadingIcon="chevron_left" trailingIcon="chevron_right">Small</app-button>
+        <app-button variant="secondary" size="md" leadingIcon="chevron_left" trailingIcon="chevron_right">Medium</app-button>
+        <app-button variant="secondary" size="lg" leadingIcon="chevron_left" trailingIcon="chevron_right">Large</app-button>
+        <app-button variant="secondary" size="md" [disabled]="true" leadingIcon="chevron_left" trailingIcon="chevron_right">Disabled</app-button>
+        <app-button variant="secondary" size="sm" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="secondary" size="md" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="secondary" size="lg" [iconOnly]="true" leadingIcon="info"></app-button>
+      </div>
+    </div>
+
+    <!-- Danger Buttons -->
+    <div class="space-y-2">
+      <h2 class="text-xl font-semibold text-ink">Danger Buttons</h2>
+      <div class="flex flex-wrap gap-3">
+        <app-button variant="danger" size="sm" leadingIcon="chevron_left" trailingIcon="chevron_right">Small</app-button>
+        <app-button variant="danger" size="md" leadingIcon="chevron_left" trailingIcon="chevron_right">Medium</app-button>
+        <app-button variant="danger" size="lg" leadingIcon="chevron_left" trailingIcon="chevron_right">Large</app-button>
+        <app-button variant="danger" size="md" [disabled]="true" leadingIcon="chevron_left" trailingIcon="chevron_right">Disabled</app-button>
+        <app-button variant="danger" size="sm" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="danger" size="md" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="danger" size="lg" [iconOnly]="true" leadingIcon="info"></app-button>
+      </div>
+    </div>
+
+    <!-- Ghost Buttons -->
+    <div class="space-y-2">
+      <h2 class="text-xl font-semibold text-ink">Ghost Buttons</h2>
+      <div class="flex flex-wrap gap-3">
+        <app-button variant="ghost" size="sm" leadingIcon="chevron_left" trailingIcon="chevron_right">Small</app-button>
+        <app-button variant="ghost" size="md" leadingIcon="chevron_left" trailingIcon="chevron_right">Medium</app-button>
+        <app-button variant="ghost" size="lg" leadingIcon="chevron_left" trailingIcon="chevron_right">Large</app-button>
+        <app-button variant="ghost" size="md" [disabled]="true" leadingIcon="chevron_left" trailingIcon="chevron_right">Disabled</app-button>
+        <app-button variant="ghost" size="sm" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="ghost" size="md" [iconOnly]="true" leadingIcon="info"></app-button>
+        <app-button variant="ghost" size="lg" [iconOnly]="true" leadingIcon="info"></app-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inputs Section -->
+  <section class="space-y-4 border-t border-line pt-8">
+    <!-- Default Inputs -->
+    <div class="space-y-2">
+      <h2 class="text-xl font-semibold text-ink">Default Inputs</h2>
+      <div class="space-y-2 max-w-md">
+        <app-input variant="default" size="sm" placeholder="Small input" leadingIcon="info" trailingIcon="close"></app-input>
+        <app-input variant="default" size="md" placeholder="Medium input" leadingIcon="info" trailingIcon="close"></app-input>
+        <app-input variant="default" size="lg" placeholder="Large input" leadingIcon="info" trailingIcon="close"></app-input>
+        <app-input variant="default" size="md" placeholder="Disabled input" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+      </div>
+    </div>
+
+    <!-- Error Inputs -->
+    <div class="space-y-2">
+      <h2 class="text-xl font-semibold text-ink">Error Inputs</h2>
+      <div class="space-y-2 max-w-md">
+        <app-input variant="error" size="sm" placeholder="Small error input" leadingIcon="info" trailingIcon="close"></app-input>
+        <app-input variant="error" size="md" placeholder="Medium error input" leadingIcon="info" trailingIcon="close"></app-input>
+        <app-input variant="error" size="lg" placeholder="Large error input" leadingIcon="info" trailingIcon="close"></app-input>
+        <app-input variant="error" size="md" placeholder="Disabled error input" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+      </div>
+    </div>
+  </section>
+</div>

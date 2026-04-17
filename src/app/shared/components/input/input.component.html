@@ -1,0 +1,35 @@
+<div class="relative flex items-center">
+  @if (leadingIcon) {
+    <span
+      class="material-icons pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
+      [class]="iconClasses"
+      aria-hidden="true"
+    >
+      {{ leadingIcon }}
+    </span>
+  }
+
+  <input
+    [class]="inputClasses"
+    [type]="type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [value]="value"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  />
+
+  @if (trailingIcon) {
+    <button
+      type="button"
+      class="absolute right-3 top-1/2 -translate-y-1/2"
+      [class]="trailingButtonClasses"
+      [disabled]="disabled"
+      (click)="clearValue()"
+      aria-label="Clear input"
+    >
+      <span class="material-icons" [class]="iconClasses" aria-hidden="true">{{ trailingIcon }}</span>
+    </button>
+  }
+</div>

@@ -1,107 +1,41 @@
-<main class="min-h-screen bg-surface-soft p-6">
-  <section class="mx-auto max-w-3xl space-y-6">
-    <header class="space-y-2">
-      <h1 class="text-3xl font-bold text-ink">Flowbite demo in {{ title() }}</h1>
-      <p class="text-ink-body">
-        This page includes interactive Flowbite components (dropdown + modal).
-      </p>
-    </header>
+<div class="min-h-screen bg-surface-soft">
+	<header class="border-b border-line bg-surface">
+		<nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+			<a routerLink="/landing" class="text-lg font-semibold text-ink">Fluxion</a>
 
-    <div
-      class="rounded-lg border border-line-brand-soft bg-brand-softer p-4 text-sm text-brand"
-      role="alert"
-    >
-      <span class="font-medium">Flowbite ready:</span> use this as a starter component library page.
-    </div>
+			<ul class="flex flex-wrap items-center gap-2 text-sm">
+				<li>
+					<a routerLink="/landing" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Landing</a>
+				</li>
+				<li>
+					<a routerLink="/login" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Login</a>
+				</li>
+				<li>
+					<a routerLink="/register" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Register</a>
+				</li>
+				<li>
+					<a routerLink="/dashboard" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Dashboard</a>
+				</li>
+				<li>
+					<a routerLink="/inventory" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Inventory</a>
+				</li>
+				<li>
+					<a routerLink="/orders" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Orders</a>
+				</li>
+				<li>
+					<a routerLink="/scan" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Scan</a>
+				</li>
+				<li>
+					<a routerLink="/users" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Users</a>
+				</li>
+				<li>
+					<a routerLink="/profile" routerLinkActive="bg-brand-softer text-brand" class="rounded-md px-3 py-2 text-ink-body hover:bg-surface-muted">Profile</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
 
-    <div class="rounded-lg border border-line bg-surface p-6 shadow-sm">
-      <h2 class="mb-4 text-xl font-semibold text-ink">Interactive examples</h2>
-
-      <div class="flex flex-wrap gap-3">
-        <button
-          id="dropdownButton"
-          data-dropdown-toggle="dropdownMenu"
-          class="rounded-lg bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-strong focus:outline-none focus:ring-4 focus:ring-brand-soft"
-          type="button"
-          aria-expanded="false"
-        >
-          Open dropdown
-        </button>
-
-        <button
-          data-modal-target="exampleModal"
-          data-modal-toggle="exampleModal"
-          class="rounded-lg border border-line-medium bg-surface px-5 py-2.5 text-sm font-medium text-black hover:bg-surface-muted focus:outline-none focus:ring-4 focus:ring-line"
-          type="button"
-        >
-          Open modal
-        </button>
-      </div>
-
-      <div
-        id="dropdownMenu"
-        class="z-10 mt-3 hidden w-44 divide-y divide-line-subtle rounded-lg border border-line-subtle bg-surface shadow-sm"
-      >
-        <ul class="py-2 text-sm text-ink-body" aria-labelledby="dropdownButton">
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-brand-softer">Dashboard</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-brand-softer">Settings</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-brand-softer">Profile</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div
-  id="exampleModal"
-  tabindex="-1"
-  aria-hidden="true"
-  class="fixed inset-s-0 top-0 z-50 hidden h-[calc(100%-1rem)] w-full max-h-full overflow-y-auto overflow-x-hidden p-4 md:inset-0"
->
-  <div class="relative max-h-full w-full max-w-md">
-    <div class="relative rounded-lg border border-line-subtle bg-surface shadow-sm">
-      <button
-        type="button"
-        class="absolute inset-e-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-ink-subtle hover:bg-surface-muted hover:text-ink"
-        data-modal-hide="exampleModal"
-        aria-label="Close modal"
-      >
-        <svg
-          class="h-3 w-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-          />
-        </svg>
-      </button>
-
-      <div class="p-6 text-center">
-        <h3 class="mb-2 text-lg font-semibold text-ink">Flowbite modal works</h3>
-        <p class="mb-6 text-sm text-ink-subtle">
-          This modal is handled by Flowbite JavaScript imported in main.ts.
-        </p>
-        <button
-          data-modal-hide="exampleModal"
-          type="button"
-          class="rounded-lg bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-strong focus:outline-none focus:ring-4 focus:ring-brand-soft"
-        >
-          Nice
-        </button>
-      </div>
-    </div>
-  </div>
+	<main class="mx-auto max-w-7xl px-4 py-6">
+		<router-outlet></router-outlet>
+	</main>
 </div>

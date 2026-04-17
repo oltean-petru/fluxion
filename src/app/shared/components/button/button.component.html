@@ -1,0 +1,13 @@
+<button [class]="buttonClasses" [disabled]="disabled">
+  @if (leadingIcon) {
+    <span class="material-icons" [class]="iconClasses" aria-hidden="true">{{ leadingIcon }}</span>
+  }
+
+  @if (!iconOnly) {
+    <span class="leading-none"><ng-content></ng-content></span>
+  }
+
+  @if (trailingIcon && !iconOnly) {
+    <span class="material-icons" [class]="iconClasses" aria-hidden="true">{{ trailingIcon }}</span>
+  }
+</button>
