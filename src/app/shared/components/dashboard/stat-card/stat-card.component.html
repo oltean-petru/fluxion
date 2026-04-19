@@ -1,0 +1,21 @@
+<article class="rounded-xl border border-line bg-surface p-4">
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-softer text-brand">
+        <span class="material-symbols-outlined text-[18px] leading-none" aria-hidden="true">{{ icon }}</span>
+      </span>
+      <div>
+        <p class="text-2xl font-semibold leading-none text-ink">{{ value }}</p>
+        <p class="mt-1 text-sm font-medium text-ink-body">{{ title }}</p>
+      </div>
+    </div>
+
+    @if (trendLabel) {
+      <span class="rounded-md px-2 py-0.5 text-xs font-semibold" [class]="trendClasses">{{ trendLabel }}</span>
+    }
+  </div>
+
+  @if (subtitle) {
+    <p class="mt-3 text-xs text-ink-subtle">{{ subtitle }}</p>
+  }
+</article>

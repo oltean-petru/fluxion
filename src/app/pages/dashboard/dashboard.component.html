@@ -1,0 +1,245 @@
+<div class="p-4 space-y-4">
+	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+		@for (stat of stats; track stat.title) {
+			<app-stat-card
+				[title]="stat.title"
+				[value]="stat.value"
+				[subtitle]="stat.subtitle"
+				[icon]="stat.icon"
+				[trendLabel]="stat.trendLabel"
+				[trendTone]="stat.trendTone"
+			></app-stat-card>
+		}
+	</div>
+
+	<app-section-card title="15,278" subtitle="Items in stock" class="mb-4">
+		<app-button section-actions variant="secondary" size="sm" [leadingIcon]="'calendar_month'" [trailingIcon]="'keyboard_arrow_down'">Dec 31 - Jan 31</app-button>
+
+		<div class="flowbite-chart" #weeklyChartHost></div>
+	</app-section-card>
+
+	<div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
+		<app-section-card class="xl:col-span-8" title="Inventory" subtitle="Live stock movement">
+			<div section-actions class="flex items-center gap-2 text-xs">
+				<app-button variant="secondary" size="sm" [leadingIcon]="'filter_alt'" [trailingIcon]="null">Filters</app-button>
+				<app-button variant="secondary" size="sm" [leadingIcon]="'tune'" [trailingIcon]="null">Configuration</app-button>
+				<app-button variant="secondary" size="sm" [leadingIcon]="'visibility'" [trailingIcon]="null">View full list</app-button>
+			</div>
+
+			<div class="flex flex-wrap items-center gap-3 px-4 py-3 mt-4 text-sm border rounded-lg border-line bg-secondary text-ink-body">
+				<span class="font-semibold text-ink">Show only:</span>
+				<label class="inline-flex items-center gap-2 cursor-pointer">
+					<input type="radio" name="inventory-filter" checked class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+					<span>All</span>
+				</label>
+				<label class="inline-flex items-center gap-2 cursor-pointer">
+					<input type="radio" name="inventory-filter" class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+					<span>In stock</span>
+				</label>
+				<label class="inline-flex items-center gap-2 cursor-pointer">
+					<input type="radio" name="inventory-filter" class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+					<span>Low stock</span>
+				</label>
+				<label class="inline-flex items-center gap-2 cursor-pointer">
+					<input type="radio" name="inventory-filter" class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+					<span>Out of stock</span>
+				</label>
+			</div>
+
+			<div class="overflow-x-auto">
+				<table class="w-full text-sm text-left">
+					<thead class="text-xs uppercase border-y border-line text-ink-subtle">
+						<tr>
+							<th class="px-2 py-3 font-medium">Product Name</th>
+							<th class="px-2 py-3 font-medium">SKU</th>
+							<th class="px-2 py-3 font-medium">Category</th>
+							<th class="px-2 py-3 font-medium">Provider</th>
+							<th class="px-2 py-3 font-medium">Value</th>
+							<th class="px-2 py-3 font-medium">Stock</th>
+							<th class="px-2 py-3 font-medium">Shipped</th>
+							<th class="px-2 py-3 font-medium">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						@for (row of filteredInventoryRows; track row.sku) {
+							<tr class="border-b border-line last:border-b-0">
+								<td class="px-2 py-3 font-medium text-ink">{{ row.product }}</td>
+								<td class="px-2 py-3 text-ink-body">{{ row.sku }}</td>
+								<td class="px-2 py-3 text-ink-body">{{ row.category }}</td>
+								<td class="px-2 py-3 text-ink-body">{{ row.provider }}</td>
+								<td class="px-2 py-3 text-ink-body">{{ row.value }}</td>
+								<td class="px-2 py-3 text-ink-body">{{ row.stock }}</td>
+								<td class="px-2 py-3 text-ink-body">{{ row.shipped }}</td>
+								<td class="px-2 py-3"><app-status-badge [label]="row.status" [tone]="row.tone"></app-status-badge></td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="flex flex-col gap-3 pt-4 mt-4 text-sm border-t border-line sm:flex-row sm:items-end sm:justify-between">
+				<div class="flex flex-wrap items-center gap-6 text-ink-body">
+					<div>
+						<p class="text-xs text-ink-subtle">Items in inventory</p>
+						<p class="font-semibold text-ink">{{ inventorySummary.itemsInInventory }}</p>
+					</div>
+					<div>
+						<p class="text-xs text-ink-subtle">Items in orders</p>
+						<p class="font-semibold text-ink">{{ inventorySummary.itemsInOrders }}</p>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-4">
+					<app-button variant="link" size="sm" [leadingIcon]="null" [trailingIcon]="null">Print barcodes</app-button>
+					<app-button variant="secondary" size="sm" [trailingIcon]="'open_in_new'">Export</app-button>
+				</div>
+			</div>
+		</app-section-card>
+
+		<app-section-card class="xl:col-span-4" title="Alerts" subtitle="Priority incidents">
+			<div section-actions>
+				<app-button variant="secondary" size="sm" [leadingIcon]="'visibility'" [trailingIcon]="null">View full list</app-button>
+			</div>
+
+			<div class="space-y-4">
+				<div>
+					<h3 class="mb-2 text-sm font-semibold text-ink">Today</h3>
+					<div class="space-y-2">
+						@for (alert of alertsToday; track alert.title) {
+							<article class="flex items-center justify-between px-3 py-3 border rounded-lg border-line">
+								<div class="flex items-start gap-2">
+									<span class="material-symbols-outlined text-[18px] leading-none"
+										[class.text-danger]="alert.tone === 'danger'"
+										[class.text-warning]="alert.tone === 'warning'"
+										[class.text-success]="alert.tone === 'success'"
+										[class.text-brand]="alert.tone === 'info'"
+										[class.text-ink-subtle]="alert.tone === 'neutral'"
+									>{{ alert.icon }}</span>
+									<div>
+										<p class="text-sm font-semibold text-ink">{{ alert.title }}</p>
+										<p class="text-xs text-ink-subtle">{{ alert.description }}</p>
+									</div>
+								</div>
+								<span class="material-symbols-outlined text-[16px] leading-none text-ink-subtle" aria-hidden="true">arrow_forward</span>
+							</article>
+						}
+					</div>
+				</div>
+
+				<div>
+					<h3 class="mb-2 text-sm font-semibold text-ink">Yesterday</h3>
+					<div class="space-y-2">
+						@for (alert of alertsYesterday; track alert.title) {
+							<article class="flex items-center justify-between px-3 py-3 border rounded-lg border-line">
+								<div class="flex items-start gap-2">
+									<span class="material-symbols-outlined text-[18px] leading-none text-success">{{ alert.icon }}</span>
+									<div>
+										<p class="text-sm font-semibold text-ink">{{ alert.title }}</p>
+										<p class="text-xs text-ink-subtle">{{ alert.description }}</p>
+									</div>
+								</div>
+							</article>
+						}
+					</div>
+				</div>
+			</div>
+		</app-section-card>
+	</div>
+
+	<app-section-card title="Recent Orders" subtitle="Last activity: 6 minutes ago">
+		<div section-actions class="flex items-center gap-2 text-xs">
+			<app-button variant="secondary" size="sm" [leadingIcon]="'filter_alt'" [trailingIcon]="null">Filters</app-button>
+			<app-button variant="secondary" size="sm" [leadingIcon]="'tune'" [trailingIcon]="null">Configuration</app-button>
+			<app-button variant="secondary" size="sm" [leadingIcon]="'visibility'" [trailingIcon]="null">View full list</app-button>
+		</div>
+
+		<div class="grid grid-cols-1 gap-3 mt-4 md:grid-cols-4">
+			<app-select placeholder="Assignee" [options]="['PH', 'AO', 'MK']" [(value)]="orderAssigneeFilter"></app-select>
+			<app-select placeholder="Order Date" [options]="['Today', 'Tomorrow', 'This week']" [(value)]="orderDateFilter"></app-select>
+			<app-select placeholder="Due date" [options]="['Today', 'Tomorrow', 'Next week']" [(value)]="orderDueDateFilter"></app-select>
+			<app-select placeholder="Status" [options]="['In progress', 'Completed', 'Canceled', 'Blocked']" [(value)]="orderStatusFilter"></app-select>
+		</div>
+
+		<div class="flex flex-wrap items-center gap-3 px-4 py-3 mt-4 text-sm border rounded-lg border-line bg-secondary text-ink-body">
+			<span class="font-semibold text-ink">Show only:</span>
+			<label class="inline-flex items-center gap-2 cursor-pointer">
+				<input type="radio" name="order-filter" checked class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+				<span>All</span>
+			</label>
+			<label class="inline-flex items-center gap-2 cursor-pointer">
+				<input type="radio" name="order-filter" class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+				<span>In stock</span>
+			</label>
+			<label class="inline-flex items-center gap-2 cursor-pointer">
+				<input type="radio" name="order-filter" class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+				<span>Low stock</span>
+			</label>
+			<label class="inline-flex items-center gap-2 cursor-pointer">
+				<input type="radio" name="order-filter" class="w-4 h-4 border-line text-brand focus:ring-brand-soft">
+				<span>Out of stock</span>
+			</label>
+		</div>
+
+		<div class="overflow-x-auto">
+			<table class="w-full text-sm text-left">
+				<thead class="text-xs uppercase border-y border-line text-ink-subtle">
+					<tr>
+						<th class="px-2 py-3 font-medium">Order Number</th>
+						<th class="px-2 py-3 font-medium">Assignee</th>
+						<th class="px-2 py-3 font-medium">Items In Order</th>
+						<th class="px-2 py-3 font-medium">Progress</th>
+						<th class="px-2 py-3 font-medium">Time Tracking</th>
+						<th class="px-2 py-3 font-medium">Order Date</th>
+						<th class="px-2 py-3 font-medium">Due Date</th>
+						<th class="px-2 py-3 font-medium">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (order of filteredRecentOrders; track order.id) {
+						<tr class="border-b border-line last:border-b-0">
+							<td class="px-2 py-3 font-medium text-ink">{{ order.orderNumber }}</td>
+							<td class="px-2 py-3">
+								<span class="inline-flex items-center justify-center text-xs font-semibold rounded-full h-7 w-7 bg-secondary text-ink-body">
+									{{ order.assignee }}
+								</span>
+							</td>
+							<td class="px-2 py-3 text-ink-body">{{ order.items }}</td>
+							<td class="px-2 py-3">
+								<div class="w-44">
+									<div class="h-1.5 overflow-hidden rounded-full bg-secondary">
+										<div class="h-1.5 rounded-full" [class]="progressBarClasses(order.tone)" [style.width.%]="order.progress"></div>
+									</div>
+									<p class="mt-1 text-xs text-right text-ink-subtle">{{ order.progress }}%</p>
+								</div>
+							</td>
+							<td class="px-2 py-3">
+								<div class="inline-flex items-center gap-1.5 rounded-lg border border-line bg-secondary px-2.5 py-1.5 text-xs font-medium text-ink-body">
+									<span class="material-symbols-outlined text-[14px] leading-none text-ink-subtle" aria-hidden="true">schedule</span>
+									{{ order.tracking }}
+									<span class="inline-flex h-5 w-5 items-center justify-center rounded-md bg-brand text-[10px] text-white">▶</span>
+								</div>
+							</td>
+							<td class="px-2 py-3 text-ink-body">
+								<div class="inline-flex items-center gap-1.5">
+									<span class="material-symbols-outlined text-[14px] leading-none text-ink-subtle" aria-hidden="true">calendar_month</span>
+									{{ order.orderDate }}
+								</div>
+							</td>
+							<td class="px-2 py-3 text-ink-body">
+								<div class="inline-flex items-center gap-1.5">
+									<span class="material-symbols-outlined text-[14px] leading-none text-ink-subtle" aria-hidden="true">calendar_month</span>
+									{{ order.dueDate }}
+								</div>
+							</td>
+							<td class="px-2 py-3"><app-status-badge [label]="order.status" [tone]="order.tone"></app-status-badge></td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-4 text-xs text-ink-subtle">
+			Last activity: <span class="font-semibold text-ink">6 minutes ago</span>
+		</div>
+	</app-section-card>
+</div>

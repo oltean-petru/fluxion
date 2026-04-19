@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost' | 'link';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 @Component({
@@ -28,7 +28,8 @@ export class ButtonComponent {
       primary: 'bg-brand text-white hover:bg-brand-strong focus:ring-4 focus:ring-brand-soft',
       secondary: 'bg-surface border border-line text-ink hover:bg-surface-muted focus:ring-4 focus:ring-line-subtle',
       danger: 'bg-danger text-white hover:bg-danger-strong focus:ring-4 focus:ring-danger-soft',
-      ghost: 'text-ink hover:bg-surface-muted focus:ring-4 focus:ring-line-subtle'
+      ghost: 'text-ink hover:bg-surface-muted focus:ring-4 focus:ring-line-subtle',
+      link: '!px-0 !py-0 !rounded-none text-brand hover:text-brand-strong focus:ring-0 bg-transparent'
     };
     return variants[this.variant] || variants.primary;
   }

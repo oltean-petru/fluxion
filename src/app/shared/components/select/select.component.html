@@ -1,0 +1,10 @@
+<div class="relative">
+  <select [class]="selectClasses" [value]="value" [disabled]="disabled" (change)="onChange($event)">
+    <option value="" disabled>{{ placeholder }}</option>
+    @for (option of normalizedOptions; track option.value) {
+      <option [value]="option.value">{{ option.label }}</option>
+    }
+  </select>
+
+  <span class="material-symbols-outlined pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[18px] leading-none text-ink-subtle" aria-hidden="true">keyboard_arrow_down</span>
+</div>
