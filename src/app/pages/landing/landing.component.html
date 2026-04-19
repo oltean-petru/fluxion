@@ -62,25 +62,42 @@
 
   <!-- Inputs Section -->
   <section class="space-y-4 border-t border-line pt-8">
-    <!-- Default Inputs -->
     <div class="space-y-2">
-      <h2 class="text-xl font-semibold text-ink">Default Inputs</h2>
-      <div class="space-y-2 max-w-md">
-        <app-input variant="default" size="sm" placeholder="Small input" leadingIcon="info" trailingIcon="close"></app-input>
-        <app-input variant="default" size="md" placeholder="Medium input" leadingIcon="info" trailingIcon="close"></app-input>
-        <app-input variant="default" size="lg" placeholder="Large input" leadingIcon="info" trailingIcon="close"></app-input>
-        <app-input variant="default" size="md" placeholder="Disabled input" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
-      </div>
-    </div>
+      <h2 class="text-xl font-semibold text-ink">Inputs</h2>
+      <p class="text-sm text-ink-subtle">Visual states are behavior-driven: initial (empty), typing (focused), filled (has value), disabled.</p>
 
-    <!-- Error Inputs -->
-    <div class="space-y-2">
-      <h2 class="text-xl font-semibold text-ink">Error Inputs</h2>
-      <div class="space-y-2 max-w-md">
-        <app-input variant="error" size="sm" placeholder="Small error input" leadingIcon="info" trailingIcon="close"></app-input>
-        <app-input variant="error" size="md" placeholder="Medium error input" leadingIcon="info" trailingIcon="close"></app-input>
-        <app-input variant="error" size="lg" placeholder="Large error input" leadingIcon="info" trailingIcon="close"></app-input>
-        <app-input variant="error" size="md" placeholder="Disabled error input" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-ink">Initial</h3>
+          <app-input size="sm" placeholder="Placeholder" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="base" placeholder="Placeholder" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="lg" placeholder="Placeholder" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="xl" placeholder="Placeholder" leadingIcon="info" trailingIcon="close"></app-input>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-ink">Filled</h3>
+          <app-input size="sm" placeholder="Placeholder" leadingIcon="info" trailingIcon="close" value="Placeholder"></app-input>
+          <app-input size="base" placeholder="Placeholder" leadingIcon="info" trailingIcon="close" value="Placeholder"></app-input>
+          <app-input size="lg" placeholder="Placeholder" leadingIcon="info" trailingIcon="close" value="Placeholder"></app-input>
+          <app-input size="xl" placeholder="Placeholder" leadingIcon="info" trailingIcon="close" value="Placeholder"></app-input>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-ink">Disabled</h3>
+          <app-input size="sm" placeholder="Placeholder" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="base" placeholder="Placeholder" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="lg" placeholder="Placeholder" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="xl" placeholder="Placeholder" [disabled]="true" leadingIcon="info" trailingIcon="close"></app-input>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-ink">Typing</h3>
+          <app-input size="sm" placeholder="Click to focus" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="base" placeholder="Click to focus" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="lg" placeholder="Click to focus" leadingIcon="info" trailingIcon="close"></app-input>
+          <app-input size="xl" placeholder="Click to focus" leadingIcon="info" trailingIcon="close"></app-input>
+        </div>
       </div>
     </div>
   </section>

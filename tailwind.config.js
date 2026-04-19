@@ -126,6 +126,9 @@ module.exports = {
       colors: {
         ...baseColors,
         ...semanticColors
+      },
+      fontFamily: {
+        sans: ['Rubik', 'sans-serif']
       }
     }
   },

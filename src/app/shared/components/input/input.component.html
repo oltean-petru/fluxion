@@ -2,7 +2,7 @@
   @if (leadingIcon) {
     <span
       class="material-icons pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
-      [class]="iconClasses"
+      [class]="iconClasses + ' ' + leadingIconColorClasses"
       aria-hidden="true"
     >
       {{ leadingIcon }}
@@ -24,7 +24,7 @@
     <button
       type="button"
       class="absolute right-3 top-1/2 -translate-y-1/2"
-      [class]="trailingButtonClasses"
+      [class]="trailingButtonClasses + ' ' + trailingIconColorClasses"
       [disabled]="disabled"
       (click)="clearValue()"
       aria-label="Clear input"
