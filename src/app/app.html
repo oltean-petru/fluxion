@@ -1,6 +1,6 @@
-<div class="flex flex-col w-screen h-screen overflow-hidden bg-white">
+<div class="flex flex-col w-screen h-screen overflow-hidden bg-surface">
   <!-- Top Nav -->
-  <header class="relative z-50 flex items-center justify-between h-16 px-6 bg-white border-b border-gray-100 shrink-0">
+  <header class="relative z-50 flex items-center justify-between h-16 px-6 border-b bg-surface border-line shrink-0">
     <div class="flex items-center w-full gap-4">
       <div class="flex items-center gap-2 shrink-0">
         <!-- Logo place -->
@@ -40,17 +40,19 @@
   </header>
 
   <!-- Main layout area -->
-  <div class="relative flex flex-1 overflow-hidden">
+  <div class="relative flex flex-1 min-h-0 overflow-hidden">
 
     <!-- Sidebar Placeholder for Width (keeps content from going under the closed menu) -->
-    <div class="w-16 h-full bg-white border-r border-gray-100 shrink-0"></div>
+    <div class="w-16 h-full border-r bg-surface border-line shrink-0"></div>
 
     <!-- The actual side menu component (absolute positioning allows it to hover over content) -->
-    <app-side-menu class="absolute top-0 left-0 z-50 h-full"></app-side-menu>
+    <app-side-menu class="absolute top-0 left-0 h-full z-60"></app-side-menu>
 
     <!-- Page Content -->
-    <main class="flex items-center justify-center flex-1 overflow-auto bg-gray-50">
-      <router-outlet></router-outlet>
+    <main class="flex-1 min-w-0 min-h-0 overflow-auto bg-secondary">
+      <div class="w-full min-h-full">
+        <router-outlet></router-outlet>
+      </div>
     </main>
   </div>
 </div>
