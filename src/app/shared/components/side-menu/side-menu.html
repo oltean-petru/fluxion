@@ -1,0 +1,99 @@
+<aside
+  [class]="isHovered() ? 'w-64 shadow-xl' : 'w-16'"
+  class="absolute top-0 left-0 h-full transition-all duration-300 transform border-r bg-surface border-line z-60"
+  aria-label="Sidebar"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="h-full px-2.5 py-4 overflow-x-hidden overflow-y-auto bg-surface">
+    <ul class="space-y-1">
+
+      <!-- Dashboard -->
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="!text-brand !bg-brand-softer !border-line-brand-soft" [routerLinkActiveOptions]="{exact: true}"
+           class="flex items-center px-2.5 py-2.5 text-ink-body font-semibold rounded-lg hover:bg-surface-soft hover:text-ink group border border-transparent transition-colors">
+          <span class="material-symbols-outlined text-[20px] leading-none shrink-0 transition-colors duration-75 group-hover:text-ink" aria-hidden="true">dashboard</span>
+          <span class="overflow-hidden transition-opacity duration-300 whitespace-nowrap"
+                [class.ms-3]="isHovered()"
+                [class.w-0]="!isHovered()"
+                [class.opacity-0]="!isHovered()"
+                [class.opacity-100]="isHovered()"
+                [class.invisible]="!isHovered()">Dashboard</span>
+        </a>
+      </li>
+
+      <!-- Orders -->
+      <li>
+        <a routerLink="/orders" routerLinkActive="!text-brand !bg-brand-softer !border-line-brand-soft" [routerLinkActiveOptions]="{exact: true}"
+           class="flex items-center px-2.5 py-2.5 text-ink-body font-semibold rounded-lg hover:bg-surface-soft hover:text-ink group border border-transparent transition-colors">
+          <span class="material-symbols-outlined text-[20px] leading-none shrink-0 transition-colors duration-75 group-hover:text-ink" aria-hidden="true">receipt_long</span>
+          <span class="overflow-hidden transition-opacity duration-300 whitespace-nowrap"
+                [class.ms-3]="isHovered()"
+                [class.w-0]="!isHovered()"
+                [class.opacity-0]="!isHovered()"
+                [class.opacity-100]="isHovered()"
+                [class.invisible]="!isHovered()">Orders</span>
+        </a>
+      </li>
+
+      <!-- Inventory -->
+      <li>
+        <a routerLink="/inventory" routerLinkActive="!text-brand !bg-brand-softer !border-line-brand-soft" [routerLinkActiveOptions]="{exact: true}"
+           class="flex items-center px-2.5 py-2.5 text-ink-body font-semibold rounded-lg hover:bg-surface-soft hover:text-ink group border border-transparent transition-colors">
+          <span class="material-symbols-outlined text-[20px] leading-none shrink-0 transition-colors duration-75 group-hover:text-ink" aria-hidden="true">inventory_2</span>
+          <span class="overflow-hidden transition-opacity duration-300 whitespace-nowrap"
+                [class.ms-3]="isHovered()"
+                [class.w-0]="!isHovered()"
+                [class.opacity-0]="!isHovered()"
+                [class.opacity-100]="isHovered()"
+                [class.invisible]="!isHovered()">Inventory</span>
+        </a>
+      </li>
+      <li>
+        <button type="button"
+                class="flex items-center w-full px-2.5 py-2.5 font-semibold transition-colors duration-75 rounded-lg group hover:bg-surface-soft border"
+                (click)="toggleOrderPickup()"
+                [class.text-brand]="isOrderPickupOpen() && isHovered()"
+                [class.text-ink-body]="!(isOrderPickupOpen() && isHovered())"
+                [class.bg-brand-softer]="isOrderPickupOpen() && isHovered()"
+                [class.border-line-brand-soft]="isOrderPickupOpen() && isHovered()"
+                [class.border-transparent]="!(isOrderPickupOpen() && isHovered())">
+          <span class="material-symbols-outlined text-[20px] leading-none shrink-0 transition-colors duration-75 group-hover:text-ink"
+               [class.text-brand]="isOrderPickupOpen() && isHovered()"
+               aria-hidden="true">barcode</span>
+              <span class="overflow-hidden text-left transition-opacity duration-300 rtl:text-right whitespace-nowrap"
+                [class.flex-1]="isHovered()"
+                [class.ms-3]="isHovered()"
+                [class.w-0]="!isHovered()"
+                [class.opacity-0]="!isHovered()"
+                [class.opacity-100]="isHovered()"
+                [class.invisible]="!isHovered()">Order Pickup</span>
+          @if (isHovered()) {
+            <span class="material-symbols-outlined text-[20px] leading-none transition-transform duration-200 transform"
+                 [class.text-brand]="isOrderPickupOpen() && isHovered()"
+                 [class.rotate-180]="!isOrderPickupOpen()"
+                 aria-hidden="true">keyboard_arrow_up</span>
+          }
+        </button>
+
+        <!-- Dropdown Sub-menu -->
+        @if (isOrderPickupOpen() && isHovered()) {
+          <ul class="py-1 mt-1 space-y-1">
+            <li>
+              <a routerLink="/scan" routerLinkActive="!text-brand" class="flex items-center w-full px-3 py-2 font-semibold transition duration-75 rounded-lg text-ink-body pl-11 group hover:text-ink">Scan</a>
+            </li>
+            <li>
+              <a routerLink="/order-alerts" routerLinkActive="!text-brand" class="flex items-center w-full px-3 py-2 font-semibold transition duration-75 rounded-lg text-ink-body pl-11 group hover:text-ink">Order Alerts</a>
+            </li>
+            <li>
+              <a routerLink="/order-items" routerLinkActive="!text-brand" class="flex items-center w-full px-3 py-2 font-semibold transition duration-75 rounded-lg text-ink-body pl-11 group hover:text-ink">Order Items</a>
+            </li>
+            <li>
+              <a routerLink="/stats" routerLinkActive="!text-brand" class="flex items-center w-full px-3 py-2 font-semibold transition duration-75 rounded-lg text-ink-body pl-11 group hover:text-ink">Stats</a>
+            </li>
+          </ul>
+        }
+      </li>
+    </ul>
+  </div>
+</aside>
