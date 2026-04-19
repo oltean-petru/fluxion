@@ -2,7 +2,7 @@
 	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
 		@for (stat of stats; track stat.title) {
 			<app-stat-card
-				[title]="stat.title"
+				[label]="stat.title"
 				[value]="stat.value"
 				[subtitle]="stat.subtitle"
 				[icon]="stat.icon"
@@ -12,14 +12,14 @@
 		}
 	</div>
 
-	<app-section-card title="15,278" subtitle="Items in stock" class="mb-4">
+	<app-section-card heading="15,278" subtitle="Items in stock" class="mb-4">
 		<app-button section-actions variant="secondary" size="sm" [leadingIcon]="'calendar_month'" [trailingIcon]="'keyboard_arrow_down'">Dec 31 - Jan 31</app-button>
 
 		<div class="flowbite-chart" #weeklyChartHost></div>
 	</app-section-card>
 
 	<div class="grid grid-cols-1 gap-4 xl:grid-cols-12">
-		<app-section-card class="xl:col-span-8" title="Inventory" subtitle="Live stock movement">
+		<app-section-card class="xl:col-span-8" heading="Inventory" subtitle="Live stock movement">
 			<div section-actions class="flex items-center gap-2 text-xs">
 				<app-button variant="secondary" size="sm" [leadingIcon]="'filter_alt'" [trailingIcon]="null">Filters</app-button>
 				<app-button variant="secondary" size="sm" [leadingIcon]="'tune'" [trailingIcon]="null">Configuration</app-button>
@@ -96,7 +96,7 @@
 			</div>
 		</app-section-card>
 
-		<app-section-card class="xl:col-span-4" title="Alerts" subtitle="Priority incidents">
+		<app-section-card class="xl:col-span-4" heading="Alerts" subtitle="Priority incidents">
 			<div section-actions>
 				<app-button variant="secondary" size="sm" [leadingIcon]="'visibility'" [trailingIcon]="null">View full list</app-button>
 			</div>
@@ -146,7 +146,7 @@
 		</app-section-card>
 	</div>
 
-	<app-section-card title="Recent Orders" subtitle="Last activity: 6 minutes ago">
+	<app-section-card heading="Recent Orders" subtitle="Last activity: 6 minutes ago">
 		<div section-actions class="flex items-center gap-2 text-xs">
 			<app-button variant="secondary" size="sm" [leadingIcon]="'filter_alt'" [trailingIcon]="null">Filters</app-button>
 			<app-button variant="secondary" size="sm" [leadingIcon]="'tune'" [trailingIcon]="null">Configuration</app-button>

@@ -6,3 +6,7 @@
 @import 'tailwindcss';
 @plugin 'flowbite/plugin';
 @source '../node_modules/flowbite';
+
+body {
+	@apply font-sans text-ink-body;
+}

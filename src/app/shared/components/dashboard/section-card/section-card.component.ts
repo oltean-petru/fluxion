@@ -9,6 +9,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './section-card.component.html'
 })
 export class SectionCardComponent {
-  @Input({ required: true }) title = '';
+  @Input({ required: true }) heading = '';
   @Input() subtitle = '';
 }

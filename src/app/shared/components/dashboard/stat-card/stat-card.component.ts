@@ -10,7 +10,7 @@ type TrendTone = 'positive' | 'negative' | 'neutral';
   templateUrl: './stat-card.component.html'
 })
 export class StatCardComponent {
-  @Input({ required: true }) title = '';
+  @Input({ required: true }) label = '';
   @Input({ required: true }) value = '';
   @Input() subtitle = '';
   @Input() icon = 'dashboard';
